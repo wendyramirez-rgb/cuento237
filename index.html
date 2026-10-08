@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuento Infantil Interactivo</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Librería PDF.js para leer el PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <!-- Librería PageFlip para el efecto de pasar página -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>📖 Cuento Infantil Interactivo</h1>
+        
+        <!-- Barra de herramientas de Accesibilidad y Control -->
+        <div class="accessibility-toolbar">
+            <!-- Botones de Audio / Lectura -->
+            <button id="btn-read-aloud" class="btn btn-audio" title="Escuchar cuento en voz alta">
+                🔊 Lectura en Voz Alta
+            </button>
+            <button id="btn-stop-audio" class="btn btn-audio-stop" style="display: none;" title="Detener lectura">
+                ⏹️ Detener Voz
+            </button>
+
+            <!-- Controles de Tamaño de Letra (Baja Visión) -->
+            <div class="font-controls">
+                <span class="label-access">Texto/Zoom:</span>
+                <button id="btn-zoom-in" class="btn btn-zoom" title="Aumentar tamaño de libro y texto">A+</button>
+                <button id="btn-zoom-out" class="btn btn-zoom" title="Disminuir tamaño de libro y texto">A-</button>
+            </div>
+        </div>
+
+        <div id="loading">✨ Cargando tu cuento mágico...</div>
+    </header>
+
+    <!-- ÁREA PRINCIPAL CON BOTONES DE NAVEGACIÓN -->
+    <main class="main-content">
+        <button id="btn-prev" class="nav-btn prev-btn" aria-label="Página Anterior">
+            ◀ <span>Anterior</span>
+        </button>
+
+        <div class="book-container">
+            <div id="flip-book" class="flip-book"></div>
+        </div>
+
+        <button id="btn-next" class="nav-btn next-btn" aria-label="Página Siguiente">
+            <span>Siguiente</span> ▶
+        </button>
+    </main>
+
+    <!-- Caja Accesible Oculta/Visible para Lectura de Texto Grande (Baja Visión) -->
+    <div id="accessible-text-panel" class="accessible-text-panel" aria-live="polite">
+        <div class="panel-header">
+            <h3>🔍 Texto en Formato Accesible (Baja Visión)</h3>
+            <span id="page-indicator">Página 1</span>
+        </div>
+        <p id="current-page-text">Cargando texto...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
